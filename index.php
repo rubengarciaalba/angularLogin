@@ -60,8 +60,8 @@
   <script src="js/angular-animate.min.js" ></script>
   <script src="js/toaster.js"></script>
   <script src="app/app.js"></script>
-  <script src="app/data.js"></script>
-  <script src="app/directives.js"></script>
-  <script src="app/authCtrl.js"></script>
+  <script src="app/services/data.js"></script>
+  <script src="app/directives/directives.js"></script>
+  <script src="app/controllers/authCtrl.js"></script>
 </html>
 
