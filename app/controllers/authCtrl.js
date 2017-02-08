@@ -1,4 +1,4 @@
-app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location, $http, Data) {
+angular.module("myApp").controller('authCtrl', function ($scope, $rootScope, $routeParams, $location, $http, Data) {
     //initially set those objects to null to avoid undefined error
     $scope.login = {};
     $scope.signup = {};

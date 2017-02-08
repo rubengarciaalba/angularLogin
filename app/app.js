@@ -1,39 +1,48 @@
-var app = angular.module('myApp', ['ngRoute', 'ngAnimate', 'toaster']);
-
-app.config(['$routeProvider',
-  function ($routeProvider) {
-        $routeProvider.
-        when('/login', {
-            title: 'Login',
-            templateUrl: 'partials/login.html',
-            controller: 'authCtrl'
-        })
-            .when('/logout', {
-                title: 'Logout',
+"use strict";
+var App = (function () {
+    function App() {
+    }
+    return App;
+}());
+App.identifier = "myApp";
+App.modules = [
+    'ngRoute'
+];
+(function () {
+    angular.module(App.identifier, App.modules)
+        .config(['$routeProvider', function ($routeProvider) {
+            //Routes.configureRoutes($routeProvider);
+            $routeProvider
+                .when('/login', {
+                name: 'Login',
+                templateUrl: 'partials/login.html',
+                controller: 'authCtrl'
+            })
+                .when('/logout', {
+                name: 'Logout',
                 templateUrl: 'partials/login.html',
                 controller: 'logoutCtrl'
             })
-            .when('/signup', {
-                title: 'Signup',
+                .when('/signup', {
+                name: 'Signup',
                 templateUrl: 'partials/signup.html',
                 controller: 'authCtrl'
             })
-            .when('/dashboard', {
-                title: 'Dashboard',
+                .when('/dashboard', {
+                name: 'Dashboard',
                 templateUrl: 'partials/dashboard.html',
                 controller: 'authCtrl'
             })
-            .when('/', {
-                title: 'Login',
+                .when('/', {
+                name: 'Login',
                 templateUrl: 'partials/login.html',
-                controller: 'authCtrl',
-                role: '0'
+                controller: 'authCtrl'
             })
-            .otherwise({
+                .otherwise({
                 redirectTo: '/login'
             });
-  }])
-    .run(function ($rootScope, $location, Data) {
+        }])
+        .run(function ($rootScope, $location, Data) {
         $rootScope.$on("$routeChangeStart", function (event, next, current) {
             $rootScope.authenticated = false;
             Data.get('session').then(function (results) {
@@ -42,14 +51,17 @@ app.config(['$routeProvider',
                     $rootScope.uid = results.uid;
                     $rootScope.name = results.name;
                     $rootScope.email = results.email;
-                } else {
+                }
+                else {
                     var nextUrl = next.$$route.originalPath;
                     if (nextUrl == '/signup' || nextUrl == '/login') {
-
-                    } else {
+                    }
+                    else {
                         $location.path("/login");
                     }
                 }
             });
         });
     });
+})();
+//# sourceMappingURL=app.js.map
