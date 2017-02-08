@@ -6,7 +6,9 @@ var App = (function () {
 }());
 App.identifier = "myApp";
 App.modules = [
-    'ngRoute'
+    'ngRoute',
+    'toaster',
+    'ngAnimate'
 ];
 (function () {
     angular.module(App.identifier, App.modules)
