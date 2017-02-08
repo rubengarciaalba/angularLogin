@@ -1,3 +1,5 @@
+var app =angular.module("myApp");
+
 app.directive('focus', function() {
     return function(scope, element) {
         element[0].focus();

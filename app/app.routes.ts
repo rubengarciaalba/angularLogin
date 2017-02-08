@@ -1,10 +1,10 @@
 /// <reference path="../node_modules/@types/angular/index.d.ts" />
 /// <reference path="../node_modules/@types/angular-route/index.d.ts" />
 
-module myApp {
+
     export class Routes {
         static $inject = ["$routeProvider"];
-        static configureRoutes($routeProvider: ng.route.IRouteProvider) {
+        static configureRoutes($routeProvider) {
             $routeProvider
                 .when('/login', {
                     name: 'Login',
@@ -39,4 +39,3 @@ module myApp {
             // $routeProvider.otherwise({ redirectTo: "/home" });
         }
     }
-}

@@ -1,7 +1,48 @@
-((): void=> {
-    var app = angular.module("myApp", ['ngRoute']);
-    app.config(myApp.Routes.configureRoutes);
-    app.run(
+"use strict"
+class App {
+    static identifier = "myApp";
+    static modules = [
+        'ngRoute',
+        'toaster',
+        'ngAnimate'
+    ];
+}
+
+(() => {
+    angular.module(App.identifier, App.modules)
+        .config(['$routeProvider', ($routeProvider) => {
+            //Routes.configureRoutes($routeProvider);
+                        $routeProvider
+                .when('/login', {
+                    name: 'Login',
+                    templateUrl: 'partials/login.html',
+                    controller: 'authCtrl'
+                })
+                .when('/logout', {
+                    name: 'Logout',
+                    templateUrl: 'partials/login.html',
+                    controller: 'logoutCtrl'
+                })
+                .when('/signup', {
+                    name: 'Signup',
+                    templateUrl: 'partials/signup.html',
+                    controller: 'authCtrl'
+                })
+                .when('/dashboard', {
+                    name: 'Dashboard',
+                    templateUrl: 'partials/dashboard.html',
+                    controller: 'authCtrl'
+                })
+                .when('/', {
+                    name: 'Login',
+                    templateUrl: 'partials/login.html',
+                    controller: 'authCtrl'
+                })
+                .otherwise({
+                    redirectTo: '/login'
+                });
+        }])
+        .run(
         ($rootScope: ICustomRootScope, $location: ng.ILocationService, Data: any) => {
             $rootScope.$on("$routeChangeStart", (event, next, current) => {
                 $rootScope.authenticated = false;
@@ -15,7 +56,7 @@
                         var nextUrl: string = next.$$route.originalPath;
                         if (nextUrl == '/signup' || nextUrl == '/login') {
 
-                        } 
+                        }
                         else {
                             $location.path("/login");
                         }
@@ -23,5 +64,5 @@
                 });
             });
         }
-    );
-})() 
+        )
+})();
