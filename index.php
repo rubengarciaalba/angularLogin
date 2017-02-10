@@ -63,6 +63,7 @@
   <script src="app/app.js"></script>
  <script src="app/services/data.js"></script>
   <script src="app/directives/directives.js"></script>
+  <script src="app/directives/contrasena.js"></script>
   <script src="app/controllers/authCtrl.js"></script>
 </html>
 
