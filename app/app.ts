@@ -43,7 +43,7 @@ class App {
                 });
         }])
         .run(
-        ($rootScope: ICustomRootScope, $location: ng.ILocationService, Data: any) => {
+        ($rootScope: ICustomRootScope, $location: ng.ILocationService, Data: myApp.data) => {
             $rootScope.$on("$routeChangeStart", (event, next, current) => {
                 $rootScope.authenticated = false;
                 Data.get('session').then((results: any) => {
