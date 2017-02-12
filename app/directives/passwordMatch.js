@@ -18,6 +18,11 @@ var PasswordMatch = (function () {
                 $scope.showPassError = false;
             }
         };
+        $scope.$watch(checker, function (n) {
+            //set the form control to valid if both 
+            //passwords are the same, else invalid
+            // control.$setValidity("passwordNoMatch", n);
+        });
     }
     PasswordMatch.instance = function () {
         var directive = function ($scope, elements, attrs, control) { return new PasswordMatch($scope, elements, attrs, control); };

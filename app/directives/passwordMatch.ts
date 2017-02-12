@@ -21,6 +21,13 @@ class PasswordMatch implements ng.IDirective {
 				$scope.showPassError = false;
 			}
 		};
+
+		$scope.$watch(checker, (n) => {
+
+			//set the form control to valid if both 
+			//passwords are the same, else invalid
+			// control.$setValidity("passwordNoMatch", n);
+		});
 	}
 
 	static instance(): ng.IDirective {
